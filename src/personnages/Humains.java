@@ -4,11 +4,15 @@ public class Humains {
 	private String nom;
 	private String boissonfavorite;
 	private int argent;
+	protected int nbConnaissance = 0;
+	protected Humains[] memoire;
 
 	public Humains(String nom, String boissonfavorite, int argent) {
 		this.nom = nom;
 		this.boissonfavorite = boissonfavorite;
 		this.argent = argent;
+		memoire = new Humains[NB_MAX_CONNAISSANCE];
+
 	}
 
 	public String getNom() {
@@ -47,5 +51,19 @@ public class Humains {
 			parler("Je n'ai plus que " + argent + " sous en poche. Je ne peux pas m'offrir un " + bien + " à " + prix
 					+ "sous");
 		}
+
+	public void faireConnaissanceAvec(Humains autreHumain) {
+		this.direBonjour();
+		autreHumain.repondre(this);
+		memoriser(autreHumain);
+	}
+
+	public void listeConnaissance() {
+		parler(" Je connais beaucoup de monde dont : ");
+		for (int i = 0; i < nbConnaissance; i++) {
+			System.out.println(memoire[i].getNom() + ",");
+		}
+
 	}
 }
+

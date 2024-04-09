@@ -1,9 +1,21 @@
 package personnages;
 
-public class Commercant {
+public class Commercant extends Humains {
 
-	public Commercant() {
-		// TODO Auto-generated constructor stub
+	public Commercant(String nom, String boissonfavorite, int argent) {
+		super(nom, "the", argent);
+
 	}
 
+	public int seFaireExtorquer() {
+		perdreArgent(getArgent());
+		parler("J’ai tout perdu! Le monde est trop injuste...");
+		return getArgent();
+	}
+
+	public void recevoir(int aideagent) {
+		gagnerArgent(aideagent);
+		;
+		parler(aideagent + " sous! ! Je te remercie généreux donateur!");
+	}
 }
